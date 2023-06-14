@@ -264,6 +264,8 @@ h3 {
     color: #4f5d6a;
     font-size: 17px;
     font-weight: normal;
+    text-align: center;
+    line-height: 200%;
 }
 
 [disabled] {
@@ -359,15 +361,16 @@ h3 {
     outline: none;
 }
 .preset:hover {
-    background: rgb(var(--border-color), .1);
+    box-shadow: 0 4px 12px rgb(var(--border-color), .25);
 }
 .preset:active {
     background: rgb(var(--border-color), .2);
+    box-shadow: none;
 }
 .randomPresets > span {
     font-weight: 500;
 }
-.preset:focus-visible {
+.preset {
     background: #fff;
-    box-shadow: 0 4px 12px rgb(var(--border-color), .2);
+    box-shadow: 0 4px 12px rgb(var(--border-color), .1);
 }

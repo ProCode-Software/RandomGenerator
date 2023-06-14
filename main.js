@@ -47,6 +47,7 @@ const rollRandom = (min, max, rolls) => {
         document.querySelector(".rollInfo").textContent = `Roll ${i + 1
             } out of ${rolls}`;
         let res = randomNumber(min, max);
+        console.log(res);
         if (i == rolls - 1) {
             document.querySelector(".rollInfo").textContent = ``;
             return res;
@@ -66,9 +67,10 @@ function toArray(text) {
 let list = "";
 function setList() {
     list = toArray(
-        prompt("Edit list:", list.toString().replaceAll(",", ", ")) || ""
+        prompt("Edit list:", list.toString().replaceAll(",", ", ")) || list.toString()
     );
     document.querySelector(".editListBtn").setAttribute("len", list.length);
+    document.querySelector(".editListBtn").title = list.toString().replaceAll(',', ', ')
 }
 document.querySelector(".editListBtn").addEventListener("click", setList);
 
@@ -96,6 +98,10 @@ tabView.childNodes.forEach((item) => {
             settingsFrame.children[0].style.display = "none";
             settingsFrame.children[1].style.display = "none";
             document.querySelector(".editListBtn").style.display = "flex";
+
+            if (!list || list == [''] || list == []) {
+                setList()
+            }
         } else {
             settingsFrame.children[0].style.display = "flex";
             settingsFrame.children[1].style.display = "flex";
@@ -103,6 +109,9 @@ tabView.childNodes.forEach((item) => {
             generateBtn.disabled = false;
         }
         gen.innerHTML = `<p class="demoText">Click the "Generate" icon to generate a random ${mode}!</p>`;
+        if (mode == 'item') {
+            gen.querySelector('.demoText').innerHTML += `<br>Don't forget to check your list by clicking the ${document.querySelector(".editListBtn").innerHTML} icon below!`
+        }
 
         const presetsForMode = presets.filter((p) => p.mode == mode);
         presetFrame.innerHTML = "";
@@ -119,6 +128,7 @@ tabView.childNodes.forEach((item) => {
                     applyPreset(...preset.params);
                 } else {
                     list = preset.params;
+                    document.querySelector(".editListBtn").setAttribute("len", list.length);
                 }
             });
         });
@@ -207,8 +217,8 @@ function loadHistory() {
                         .substring(0, 40)}${item.list.toString().replaceAll(",", ", ").length > 39
                             ? "..."
                             : ""
-                    }`}</div>
-        <div class="siCt">${item.result}</div>
+                    }` || 'No list provided'}</div>
+        <div class="siCt">${item.result || '-'}</div>
         `;
             sidebarFrame.append(el);
         });
