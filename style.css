@@ -319,3 +319,55 @@ h3 {
     font-size: 1.4em;
     font-weight: 600;
 }
+.randomControls {
+    display: flex;
+    gap: 25px;
+    flex-direction: column;
+    width: 100%;
+}
+.randomPresetCt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.randomPresets {
+    padding: 10px 18px;
+    border-radius: 18px;
+    background: rgba(239, 246, 252, .6);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: 90%;
+}
+.randomPresets svg {
+    width: 28px;
+    height: 28px;
+}
+.presetFrame {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.preset {
+    color: var(--accent);
+    transition: .15s;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    outline: none;
+}
+.preset:hover {
+    background: rgb(var(--border-color), .1);
+}
+.preset:active {
+    background: rgb(var(--border-color), .2);
+}
+.randomPresets > span {
+    font-weight: 500;
+}
+.preset:focus-visible {
+    background: #fff;
+    box-shadow: 0 4px 12px rgb(var(--border-color), .2);
+}
