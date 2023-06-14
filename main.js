@@ -38,7 +38,7 @@ const isFloat = (num) => {
 };
 const randomNumber = (min, max) => {
     if (isFloat(min) || isFloat(max)) {
-        return (Math.random() * (max - min) + min).toFixed(2);
+        return (Math.random() * (max - min) + min).toFixed(3);
     } else {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
@@ -74,6 +74,7 @@ const gen = document.querySelector(".randomView");
 const sidebarFrame = document.querySelector(".sidebarContent");
 const clearHistoryBtn = document.querySelector(".clearHistoryBtn");
 const presetFrame = document.querySelector(".presetFrame");
+const darkModeBtn = document.querySelector('.darkModeBtn')
 
 let list = "";
 function setList() {
@@ -138,6 +139,8 @@ tabView.childNodes.forEach((item) => {
                 } else {
                     list = preset.params;
                     document.querySelector(".editListBtn").setAttribute("len", list.length);
+                    listEmpty = false
+                    generateBtn.disabled = false
                 }
             });
         });
@@ -321,5 +324,15 @@ function useTooltip(element) {
     checkSize()
 }
 
-useTooltip(document.querySelector(".copyResBtn"))
-useTooltip(document.querySelector(".hideSidebarBtn"))
+document.querySelectorAll('[title]').forEach(el => useTooltip(el))
+
+
+
+let darkThemeOn = JSON.parse(localStorage.getItem('darkMode') || window.matchMedia('(prefers-color-scheme: dark)').matches)
+document.body.classList[darkThemeOn ? 'add' : 'remove']('dark')
+
+darkModeBtn.addEventListener('click', () => {
+    darkThemeOn = !darkThemeOn
+    document.body.classList[darkThemeOn ? 'add' : 'remove']('dark')
+    localStorage.setItem('darkMode', darkThemeOn)
+})

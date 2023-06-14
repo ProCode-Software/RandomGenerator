@@ -516,3 +516,6 @@ body.dark .tooltip {
 .sidebar {
     animation: sidebar .4s ease-in-out;
 }
+.spacer {
+    width: 100%;
+}
