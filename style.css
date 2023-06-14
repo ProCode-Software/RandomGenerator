@@ -1,6 +1,8 @@
+@import url("https://rsms.me/inter/inter.css");
+
 * {
     box-sizing: border-box;
-    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', system-ui, sans-serif;
 }
 
 body {
@@ -8,8 +10,30 @@ body {
     --border-color: 145, 185, 225;
     --accent: rgb(10, 98, 238);
     --red: rgb(238, 10, 59);
+    --sub: #4f5d6a;
+    --border-color-2: 239, 246, 252;
+    --red-dark: rgb(199, 10, 51);
+    --blue-dark: rgb(9, 87, 213);
+    --bg-color: #ffffff;
+    --shadow-color: var(--border-color);
     padding: 10px;
     height: 95vh;
+    color: #2c2f32;
+    background: var(--bg-color);
+}
+
+body.dark {
+    --bg-color: #272c35;
+    --shadow-color: 0, 0, 0;
+    --sub: #7c8fa0;
+    --border-color-2: 50, 60, 72;
+    --accent: rgb(50, 128, 255);
+    --blue-dark: rgb(44, 111, 219);
+    --border-color: 154, 185, 216;
+    --red: rgb(255, 50, 101);
+    --red-dark: rgb(232, 9, 46);
+    color: #fafafa;
+    color-scheme: dark;
 }
 
 .topToolbar {
@@ -22,7 +46,7 @@ body {
     display: flex;
     align-items: flex-start;
     gap: 10px;
-    background: rgba(239, 246, 252, 0.5);
+    background: rgba(var(--border-color-2), 0.5);
     border-radius: 100px;
     padding: 6px;
 }
@@ -48,7 +72,7 @@ body {
 }
 
 .hideSidebarBtn:hover {
-    --color: rgba(239, 246, 252, 0.5);
+    --color: rgba(var(--border-color-2), 0.5);
     background: var(--color);
     border-color: var(--color);
 }
@@ -73,6 +97,10 @@ svg {
     padding: 12px 18px;
     position: relative;
     background: #fff;
+}
+
+body.dark .tabItem:not(:hover, .active) {
+    background: var(--bg-color);
 }
 
 .tabItem:hover {
@@ -242,26 +270,26 @@ h3 {
     right: -4px;
     bottom: -4px;
     padding: 6px;
-    background: rgba(239, 246, 252);
+    background: rgba(var(--border-color-2));
     font-size: .9em;
     border-radius: 10px;
 }
 
 .btn:hover {
-    background: rgba(239, 246, 252, .4);
+    background: rgba(var(--border-color-2), .4);
     cursor: pointer;
 }
 
 .btn.primary:hover {
-    background: rgb(9, 87, 213);
+    background: var(--blue-dark);
 }
 
 .btn.dangerous:hover {
-    background: rgb(199, 10, 51)
+    background: var(--red-dark);
 }
 
 .demoText {
-    color: #4f5d6a;
+    color: var(--sub);
     font-size: 17px;
     font-weight: normal;
     text-align: center;
@@ -308,7 +336,7 @@ h3 {
 .siSub {
     width: 100%;
     font-size: .9em;
-    color: #4f5d6a;
+    color: var(--sub);
 }
 
 .siCt {
@@ -321,31 +349,36 @@ h3 {
     font-size: 1.4em;
     font-weight: 600;
 }
+
 .randomControls {
     display: flex;
     gap: 25px;
     flex-direction: column;
     width: 100%;
 }
+
 .randomPresetCt {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
 }
+
 .randomPresets {
     padding: 10px 18px;
     border-radius: 18px;
-    background: rgba(239, 246, 252, .6);
+    background: rgba(var(--border-color-2), .6);
     display: flex;
     align-items: center;
     gap: 12px;
     max-width: 90%;
 }
+
 .randomPresets svg {
     width: 28px;
     height: 28px;
 }
+
 .presetFrame {
     display: flex;
     gap: 10px;
@@ -359,18 +392,127 @@ h3 {
     padding: 10px;
     cursor: pointer;
     outline: none;
+    background: #fff;
+    box-shadow: 0 4px 12px rgb(var(--shadow-color), .1);
 }
+
 .preset:hover {
-    box-shadow: 0 4px 12px rgb(var(--border-color), .25);
+    box-shadow: 0 4px 12px rgb(var(--shadow-color), .25);
 }
+
 .preset:active {
-    background: rgb(var(--border-color), .2);
+    background: rgb(var(--shadow-color), .2);
     box-shadow: none;
 }
-.randomPresets > span {
+
+body.dark .preset:not(:active) {
+    background: rgb(58, 63, 77);
+}
+
+.randomPresets>span {
     font-weight: 500;
 }
-.preset {
-    background: #fff;
-    box-shadow: 0 4px 12px rgb(var(--border-color), .1);
+
+.tooltip {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    padding: 10px 15px;
+    border-radius: 12px;
+    background: #222528;
+    box-shadow: 0 4px 20px rgb(var(--shadow-color), .2);
+    border: 1px solid rgb(var(--border-color), .2);
+    display: none;
+    align-items: center;
+    gap: 10px;
+    color: #fafafa;
+    text-align: center;
+    justify-content: center;
+    max-width: 500px;
+    animation: tooltip .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    width: max-content;
+    font-size: 15px;
+}
+
+body.dark .tooltip {
+    background: #2e363e;
+    box-shadow: 0 4px 20px rgb(var(--shadow-color), .3);
+}
+
+.tooltip.right {
+    right: 0;
+}
+
+.tparent:hover .tooltip,
+.tparent:active .tooltip {
+    display: flex;
+}
+
+@keyframes tooltip {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(.6);
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .sidebar {
+        width: 100%;
+        position: absolute;
+        z-index: 10;
+        background: var(--bg-color);
+        display: none;
+        max-width: none;
+    }
+
+    .randomSetting {
+        width: 27.5%;
+    }
+
+    .settingInp {
+        width: 100%;
+    }
+
+    .container>main {
+        padding-right: 0;
+    }
+
+    .randomPresets {
+        max-width: none;
+        flex-wrap: wrap;
+    }
+
+    .randomView {
+        font-size: 25vw;
+    }
+
+    .presetFrame {
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .tooltip {
+        max-width: 80vw;
+    }
+}
+
+.rollInfo {
+    color: var(--sub);
+}
+
+.tparent {
+    position: relative;
+}
+
+.sidebarContent>center {
+    color: var(--sub);
+}
+
+@keyframes sidebar {
+    from {
+        margin-left: -50%;
+    }
+}
+
+.sidebar {
+    animation: sidebar .4s ease-in-out;
 }

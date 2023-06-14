@@ -9,10 +9,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="dark">
     <h1 class="tit">Random Generator</h1>
     <div class="topToolbar">
-        <button class="hideSidebarBtn btn">
+        <button class="hideSidebarBtn btn"
+            title="Toggle sidebar">
             <svg width="24" height="24" viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg">
@@ -85,7 +86,7 @@
         <aside class="sidebar">
             <div class="sidebarTitle">History</div>
             <div class="sidebarContent"></div>
-            <button class="clearHistoryBtn btn">
+            <button class="clearHistoryBtn btn dangerous">
                 <svg width="24" height="24"
                     viewBox="0 0 24 24" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -153,7 +154,8 @@
                     </div>
                     <div class="toolbarRight">
                         <button
-                            class="copyResBtn btn iconBtn">
+                            class="copyResBtn btn iconBtn"
+                            title="Copy to clipboard">
                             <svg width="24" height="24"
                                 viewBox="0 0 24 24"
                                 fill="none"
@@ -199,14 +201,22 @@
                     </div>
                     <div class="randomPresetCt">
                         <div class="randomPresets">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            <svg width="24" height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M10.8837 4.51051C11.2832 3.49754 12.7168 3.49754 13.1163 4.51051L14.6799 8.47508C14.8324 8.86166 15.1384 9.16767 15.525 9.32014L19.4895 10.8837C20.5025 11.2832 20.5025 12.7169 19.4895 13.1164L15.525 14.68C15.1384 14.8324 14.8324 15.1384 14.6799 15.525L13.1163 19.4896C12.7168 20.5026 11.2832 20.5026 10.8837 19.4896L9.32008 15.525C9.16761 15.1384 8.8616 14.8324 8.47502 14.68L4.51045 13.1164C3.49748 12.7169 3.49748 11.2832 4.51045 10.8837L8.47501 9.32014C8.8616 9.16767 9.16761 8.86166 9.32008 8.47508L10.8837 4.51051Z"
-                                    stroke="#212325" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                                <circle cx="5.25" cy="5.25" r="1.25" fill="#212325" />
-                                <circle cx="19" cy="19" r="1" fill="#212325" />
+                                    stroke="currentColor"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <circle cx="5.25" cy="5.25"
+                                    r="1.25"
+                                    fill="currentColor" />
+                                <circle cx="19" cy="19"
+                                    r="1"
+                                    fill="currentColor" />
                             </svg>
                             <span>Try using a preset:</span>
                             <div class="presetFrame"></div>

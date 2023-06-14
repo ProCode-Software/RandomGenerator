@@ -1,6 +1,7 @@
 const format = new Intl.NumberFormat(navigator.language);
 let isFormatted = true,
-    currentPreset = "";
+    currentPreset = "",
+    listEmpty;
 
 let userHistory = JSON.parse(localStorage.getItem("history"));
 
@@ -47,7 +48,6 @@ const rollRandom = (min, max, rolls) => {
         document.querySelector(".rollInfo").textContent = `Roll ${i + 1
             } out of ${rolls}`;
         let res = randomNumber(min, max);
-        console.log(res);
         if (i == rolls - 1) {
             document.querySelector(".rollInfo").textContent = ``;
             return res;
@@ -64,16 +64,6 @@ function toArray(text) {
     return t.split(",");
 }
 
-let list = "";
-function setList() {
-    list = toArray(
-        prompt("Edit list:", list.toString().replaceAll(",", ", ")) || list.toString()
-    );
-    document.querySelector(".editListBtn").setAttribute("len", list.length);
-    document.querySelector(".editListBtn").title = list.toString().replaceAll(',', ', ')
-}
-document.querySelector(".editListBtn").addEventListener("click", setList);
-
 const tabView = document.querySelector(".tabView");
 const generateBtn = document.querySelector(".generateBtn");
 const sidebar = document.querySelector(".sidebar");
@@ -84,6 +74,24 @@ const gen = document.querySelector(".randomView");
 const sidebarFrame = document.querySelector(".sidebarContent");
 const clearHistoryBtn = document.querySelector(".clearHistoryBtn");
 const presetFrame = document.querySelector(".presetFrame");
+
+let list = "";
+function setList() {
+    list = toArray(
+        prompt("Edit list:", list.toString().replaceAll(",", ", ")) || list.toString()
+    );
+    isFormatted = true, currentPreset = ""
+    let f = list.toString().replaceAll(',', ', ')
+
+    listEmpty = list[0] == '' && list.length < 2
+
+    document.querySelector(".editListBtn").setAttribute("len", listEmpty ? '0' : list.length);
+    document.querySelector(".editListBtn").title = f || '[No items]'
+    useTooltip(document.querySelector(".editListBtn"))
+
+    generateBtn.disabled = listEmpty
+}
+document.querySelector(".editListBtn").addEventListener("click", setList);
 
 let mode;
 tabView.childNodes.forEach((item) => {
@@ -99,7 +107,8 @@ tabView.childNodes.forEach((item) => {
             settingsFrame.children[1].style.display = "none";
             document.querySelector(".editListBtn").style.display = "flex";
 
-            if (!list || list == [''] || list == []) {
+            if (!list || list == [''] || list == [] || listEmpty) {
+                generateBtn.disabled = listEmpty
                 setList()
             }
         } else {
@@ -137,7 +146,7 @@ tabView.childNodes.forEach((item) => {
 tabView.children[0].click();
 
 toggleSidebarBtn.addEventListener("click", () => {
-    sidebar.style.display = sidebar.style.display == "none" ? "" : "none";
+    sidebar.style.display = sidebar.style.display == "none" ? "flex" : "none";
 });
 
 generateBtn.addEventListener("click", () => {
@@ -267,3 +276,50 @@ document.querySelectorAll(".randomSettings input").forEach((c) => {
 function fieldAt(name) {
     return settingsFrame.querySelector("input." + name);
 }
+
+
+/**
+ * 
+ * @param {Element} element 
+ */
+function useTooltip(element) {
+    let title = element.title
+    const tt = element.querySelector('.tooltip') || document.createElement('div')
+    tt.className = 'tooltip'
+    tt.innerHTML = title
+    element.append(tt)
+    element.classList.add('tparent')
+    element.title = ''
+
+    function checkSize() {
+        const bounds = tt.getBoundingClientRect()
+        const pb = element.getBoundingClientRect()
+
+        if (pb.x > window.innerWidth / 2) {
+            tt.classList.add('right')
+        } else {
+            if (tt.classList.contains('right')) tt.classList.remove('right')
+        }
+
+        if (!tt.classList.contains('right')) {
+            if (bounds.left < 10) {
+                tt.style.left = 0
+            } else {
+                tt.style.left = ''
+            }
+        } else {
+            if (bounds.right < 10) {
+                tt.style.right = 0
+            } else {
+                tt.style.right = ''
+            }
+        }
+    }
+
+    window.onresize = checkSize
+
+    checkSize()
+}
+
+useTooltip(document.querySelector(".copyResBtn"))
+useTooltip(document.querySelector(".hideSidebarBtn"))
