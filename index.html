@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+    <title>Random Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1 class="tit">Random Generator</h1>
+    <div class="topToolbar">
+        <button class="hideSidebarBtn btn">
+            <svg width="24" height="24" viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M9.5473 3.75H7.25C5.317 3.75 3.75 5.317 3.75 7.25V16.75C3.75 18.683 5.317 20.25 7.25 20.25H9.5473M9.5473 3.75H16.75C18.683 3.75 20.25 5.317 20.25 7.25V16.75C20.25 18.683 18.683 20.25 16.75 20.25H9.5473M9.5473 3.75V20.25"
+                    stroke="currentColor" stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+        </button>
+        <div class="tabView">
+            <button class="tabItem">
+                <svg width="24" height="24" viewBox="0 0 24 24"
+                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.77783 8.39478L21.2501 8.39478"
+                        stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M2.75 15.6053L20.2222 15.6053"
+                        stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M6.28247 21.13L9.49496 2.87"
+                        stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M14.5046 21.13L17.7171 2.87"
+                        stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+                Number
+            </button>
+            <button class="tabItem active">
+                <svg width="24" height="24"
+                    viewBox="0 0 24 24" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="4.44298" cy="5.08064"
+                        r="1.33064" fill="currentColor" />
+                    <path d="M9.1227 5.08057H20.8877"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <circle cx="4.44298" cy="12.0001"
+                        r="1.33064" fill="currentColor" />
+                    <path d="M9.1227 12H20.8877"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <circle cx="4.44298" cy="18.9194"
+                        r="1.33064" fill="currentColor" />
+                    <path d="M9.1227 18.9194H20.8877"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+                Item</button>
+        </div>
+    </div>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebarTitle">History</div>
+            <div class="sidebarContent"></div>
+            <button class="clearHistoryBtn btn dangerous">
+                <svg width="24" height="24"
+                    viewBox="0 0 24 24" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M4.68651 6.21305L6.80066 18.9763C7.00053 20.1829 8.04402 21.0677 9.26705 21.0677H12.6151M19.3134 6.21305L17.1992 18.9763C16.9993 20.1829 15.9559 21.0677 14.7328 21.0677H11.3848"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path
+                        d="M10.0224 11.1161L10.0224 16.1648"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path
+                        d="M13.9776 11.1161L13.9776 16.1648"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path
+                        d="M2.75 6.21307H21.25M14.7773 6.21307V4.43228C14.7773 3.60385 14.1057 2.93228 13.2773 2.93228H10.7227C9.8943 2.93228 9.22272 3.60385 9.22272 4.43228V6.21307H14.7773Z"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+                Clear history</button>
+        </aside>
+        <main>
+            <div class="randomView"></div>
+            <div class="bottomSection">
+                <div class="randomToolbar">
+                    <div class="toolbarLeft">
+                        <button
+                            class="editListBtn btn iconBtn">
+                            <svg width="24" height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M14.4393 5.77958L4.19879 16.0201C3.8945 16.3244 3.69647 16.7187 3.63412 17.1445L3.08138 20.9186L6.85547 20.3659C7.28126 20.3035 7.67558 20.1055 7.97987 19.8012L18.2204 9.56065M14.4393 5.77958L16.6689 3.55C17.2938 2.92516 18.3068 2.92516 18.9317 3.55L20.45 5.06833C21.0748 5.69317 21.0748 6.70623 20.45 7.33107L18.2204 9.56065M14.4393 5.77958L18.2204 9.56065"
+                                    stroke="currentColor"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                        <button
+                            class="generateBtn btn primary">
+                            <svg width="24" height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M19.75 7.01785L10.4928 16.275C10.1023 16.6656 9.46913 16.6656 9.07861 16.275L4.25 11.4464"
+                                    stroke="currentColor"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            Generate</button>
+                        <div class="rollInfo"></div>
+                    </div>
+                    <div class="toolbarRight">
+                        <button
+                            class="copyResBtn btn iconBtn">
+                            <svg width="24" height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M7.13159 5.75C7.13159 4.09315 8.47474 2.75 10.1316 2.75H16.7895C18.4463 2.75 19.7895 4.09315 19.7895 5.75V15.3289C19.7895 16.9858 18.4463 18.3289 16.7895 18.3289H10.1316C8.47474 18.3289 7.13159 16.9858 7.13159 15.3289V5.75Z"
+                                    stroke="currentColor"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path fill-rule="evenodd"
+                                    clip-rule="evenodd"
+                                    d="M15.5865 21.7631C16.2167 21.5083 16.7463 21.0646 17.107 20.5H13.1455C11.7681 20.5 10.7719 20.4996 9.98377 20.447C9.20219 20.3948 8.67904 20.2937 8.24277 20.1173C6.92316 19.5838 5.87671 18.5374 5.34322 17.2177C5.16685 16.7815 5.0657 16.2583 5.01352 15.4767C4.9609 14.6886 4.96051 13.6924 4.96051 12.315V9.67105V5.43243C4.47457 5.74295 4.07827 6.17837 3.81474 6.69558C3.61565 7.08632 3.53491 7.50472 3.49706 7.96798C3.46049 8.41555 3.4605 8.96625 3.46051 9.63963L3.46051 12.3425C3.46051 13.6866 3.46051 14.7328 3.51685 15.5767C3.57401 16.4329 3.69156 17.1343 3.95257 17.7799C4.63849 19.4766 5.98391 20.822 7.68056 21.5079C8.32618 21.769 9.02763 21.8865 9.88384 21.9437C10.7278 22 11.7739 22 13.1179 22H13.171C13.7191 22 14.1673 22 14.5337 21.9756C14.9122 21.9503 15.2565 21.8965 15.5865 21.7631Z"
+                                    fill="currentColor" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="randomControls">
+                    <!-- Number: [Min, Max, Odd/Even?, Rolls] Item: [Rolls] -->
+                    <div
+                        class="randomSettings">
+                        <div class="randomSetting">
+                            <div class="settingLabel">Min
+                            </div>
+                            <input type="number"
+                                class="settingInp numMinLabel"
+                                value="1">
+                        </div>
+                        <div class="randomSetting">
+                            <div class="settingLabel">Max
+                            </div>
+                            <input type="number"
+                                class="settingInp numMaxLabel"
+                                value="10">
+                        </div>
+                        <div class="randomSetting">
+                            <div class="settingLabel">Rolls
+                            </div>
+                            <input type="number"
+                                class="settingInp numRollsLabel"
+                                min="1" value="1" max="200">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>

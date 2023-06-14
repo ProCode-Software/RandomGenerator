@@ -1,0 +1,321 @@
+* {
+    box-sizing: border-box;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    font-size: 16px;
+    --border-color: 145, 185, 225;
+    --accent: rgb(10, 98, 238);
+    --red: rgb(238, 10, 59);
+    padding: 10px;
+    height: 95vh;
+}
+
+.topToolbar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.tabView {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: rgba(239, 246, 252, 0.5);
+    border-radius: 100px;
+    padding: 6px;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    font-size: inherit;
+    border: 2px solid rgb(var(--border-color), .15);
+    border-radius: 100px;
+    background: none;
+    transition: .15s;
+    gap: 10px;
+    outline: none;
+}
+
+.hideSidebarBtn {
+    padding: 12px;
+    border-radius: 14px;
+    border: 1px solid rgb(var(--border-color), .2);
+}
+
+.hideSidebarBtn:hover {
+    --color: rgba(239, 246, 252, 0.5);
+    background: var(--color);
+    border-color: var(--color);
+}
+
+svg {
+    display: inline-flex;
+    flex-shrink: 0;
+}
+
+.tabItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    border: none;
+    border-radius: 100px;
+    background: none;
+    outline: none;
+    transition: .2s;
+    font-size: inherit;
+    padding: 12px 18px;
+    position: relative;
+    background: #fff;
+}
+
+.tabItem:hover {
+    background: rgb(var(--border-color), .15);
+}
+
+.tabItem svg {
+    width: 20px;
+    height: 20px;
+}
+
+.tabItem.active {
+    color: #fff;
+    background: var(--accent);
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+    height: 80%;
+}
+
+.container>main {
+    width: 100%;
+    height: 100%;
+    padding-right: 30px;
+}
+
+.sidebar {
+    max-width: 450px;
+    width: 20vw;
+    flex-shrink: 0;
+    min-width: 250px;
+}
+
+.randomView {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 35vh;
+    font-size: 10em;
+    flex-direction: column;
+    font-weight: 500;
+}
+
+.randomSub {
+    text-align: left;
+    font-size: .2em;
+    font-weight: normal;
+    color: var(--accent);
+}
+
+.iconBtn {
+    padding: 12px;
+}
+
+.btn.primary {
+    color: #fff;
+    background: var(--accent);
+    font-weight: 500;
+}
+
+.btn.dangerous {
+    color: #fff;
+    background: var(--red);
+    font-weight: 500;
+}
+
+.randomToolbar {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.toolbarLeft,
+.toolbarRight {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.toolbarLeft {
+    justify-content: flex-start;
+}
+
+.toolbarRight {
+    justify-content: flex-end;
+}
+
+::selection {
+    background: var(--accent);
+    color: #fff;
+}
+
+.randomSettings {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.randomSetting {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+input,
+textarea {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    font-size: inherit;
+    border: 2px solid rgb(var(--border-color), .15);
+    border-radius: 100px;
+    background: none;
+    transition: .15s;
+}
+
+input:focus,
+textarea:focus {
+    outline: 2.5px solid var(--accent);
+    border-color: transparent;
+}
+
+.bottomSection {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.settingInp {
+    width: 250px;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: 600;
+}
+
+.randomText.med {
+    font-size: 0.7em;
+}
+
+.randomText.sm {
+    font-size: 0.4em;
+}
+
+.randomText.tiny {
+    font-size: 0.2em;
+}
+
+.editListBtn {
+    position: relative;
+}
+
+.editListBtn::after {
+    content: attr(len);
+    position: absolute;
+    right: -4px;
+    bottom: -4px;
+    padding: 6px;
+    background: rgba(239, 246, 252);
+    font-size: .9em;
+    border-radius: 10px;
+}
+
+.btn:hover {
+    background: rgba(239, 246, 252, .4);
+    cursor: pointer;
+}
+
+.btn.primary:hover {
+    background: rgb(9, 87, 213);
+}
+
+.btn.dangerous:hover {
+    background: rgb(199, 10, 51)
+}
+
+.demoText {
+    color: #4f5d6a;
+    font-size: 17px;
+    font-weight: normal;
+}
+
+[disabled] {
+    opacity: .5;
+    pointer-events: none;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-block: 20px;
+    height: auto;
+}
+
+.clearHistoryBtn {
+    width: 100%;
+}
+
+.sidebarContent {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.sidebarItem {
+    border-radius: 15px;
+    border: 1px solid rgb(var(--border-color), .2);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 18px;
+}
+
+.siSub {
+    width: 100%;
+    font-size: .9em;
+    color: #4f5d6a;
+}
+
+.siCt {
+    width: 100%;
+    font-size: 1.4em;
+    font-weight: 500;
+}
+
+.sidebarTitle {
+    font-size: 1.4em;
+    font-weight: 600;
+}
