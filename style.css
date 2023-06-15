@@ -88,6 +88,7 @@ svg {
     align-items: center;
     gap: 8px;
     font-weight: 500;
+    color: var(--accent);
     border: none;
     border-radius: 100px;
     background: none;
@@ -462,6 +463,7 @@ body.dark .tooltip {
         background: var(--bg-color);
         display: none;
         max-width: none;
+        height: 85%;
     }
 
     .randomSetting {
@@ -493,6 +495,12 @@ body.dark .tooltip {
     .tooltip {
         max-width: 80vw;
     }
+
+    .topToolbar {
+        width: 100%;
+        gap: initial;
+        justify-content: space-between;
+    }
 }
 
 .rollInfo {
@@ -516,6 +524,7 @@ body.dark .tooltip {
 .sidebar {
     animation: sidebar .4s ease-in-out;
 }
+
 .spacer {
     width: 100%;
 }
